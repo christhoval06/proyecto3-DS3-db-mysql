@@ -1,9 +1,14 @@
+package utils;
+
 import modelos.Item;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,7 +34,23 @@ public class FormPanel extends JPanel {
         add(field);
     }
 
-    public void createTextFieldAndLabel(String nombre, String value, int y, Font fnt){
+    public void createBtn(String text, Point xy, Dimension wh, final Callable<Void> callable){
+        ImageButton btn = new ImageButton(text, pallet.get("color1"), pallet.get("color2"), pallet.get("color5"));
+        btn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    callable.call();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        btn.setSize(wh);
+        btn.setLocation(xy);
+        add(btn);
+    }
+
+    public JTextField createTextFieldAndLabel(String nombre, String value, int y, Font fnt){
         JLabel label = new JLabel(String.format("%s:", nombre.toUpperCase()));
         label.setForeground(pallet.get("color1"));
         label.setFont(fnt);
@@ -45,9 +66,10 @@ public class FormPanel extends JPanel {
         field.setName(removeCosasRaras(nombre));
         field.setBounds(230, y, 400, 40);
         add(field);
+        return field;
     }
 
-    public void createCheckBoxdAndLabel(String nombre, boolean value, int y, Font fnt){
+    public JCheckBox createCheckBoxdAndLabel(String nombre, boolean value, int y, Font fnt){
         JCheckBox chk = new JCheckBox(nombre.toUpperCase());
         chk.setBounds(230, y, 120, 40);
         chk.setSelected(value);
@@ -56,10 +78,10 @@ public class FormPanel extends JPanel {
         chk.setForeground(pallet.get("color1"));
         chk.setName(removeCosasRaras(nombre));
         add(chk);
-
+        return  chk;
     }
 
-    public void createComboBoxAndLabel(String nombre, String value, int y, Font fnt, final List<Item> values){
+    public JComboBox createComboBoxAndLabel(String nombre, String value, int y, Font fnt, final List<Item> values){
         JLabel label = new JLabel(String.format("%s:", nombre.toUpperCase()));
         label.setForeground(pallet.get("color1"));
         label.setFont(fnt);
@@ -79,6 +101,7 @@ public class FormPanel extends JPanel {
         combo.setName(removeCosasRaras(nombre));
         combo.setBounds(230, y, 400, 40);
         add(combo);
+        return combo;
     }
 
     public String removeCosasRaras(String s){
@@ -99,7 +122,8 @@ public class FormPanel extends JPanel {
             }
             if (fields[i].getClass().getSimpleName().equalsIgnoreCase("JComboBox")) {
                 JComboBox f = (JComboBox) fields[i];
-                form.put(f.getName(), ((Item) f.getSelectedItem()).getCode());
+                Item item = (Item) f.getSelectedItem();
+                form.put(f.getName(), item!=null? item.getCode(): "");
             }
         }
         return form;

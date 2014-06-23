@@ -1,3 +1,8 @@
+package utils;
+
+import views.Clientes;
+import views.Vendedores;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -55,7 +60,7 @@ public class MyMenu implements ActionListener {
         //CLIENTES
         menu = new JMenu("Clientes");
         menu.setMnemonic(KeyEvent.VK_C);
-        menu.getAccessibleContext().setAccessibleDescription("Menu de Clientes");
+        menu.getAccessibleContext().setAccessibleDescription("Menu de views.Clientes");
         menuBar.add(menu);
 
         menuItem = new JMenuItem("Lista", KeyEvent.VK_L);
@@ -73,7 +78,7 @@ public class MyMenu implements ActionListener {
         //VENDEDORES
         menu = new JMenu("Vendedores");
         menu.setMnemonic(KeyEvent.VK_V);
-        menu.getAccessibleContext().setAccessibleDescription("Menu de Vendedores");
+        menu.getAccessibleContext().setAccessibleDescription("Menu de views.Vendedores");
         menuBar.add(menu);
 
         menuItem = new JMenuItem("Lista", KeyEvent.VK_I);
@@ -123,7 +128,7 @@ public class MyMenu implements ActionListener {
             if(action.equalsIgnoreCase("clist")){
                 clientes.lista();
             }else if(action.equalsIgnoreCase("cadd")){
-                clientes.editar(null);
+                clientes.editar("");
             }
             frame.repaint();
         }else if(action.equalsIgnoreCase("vlist") || action.equalsIgnoreCase("vadd")){
@@ -133,7 +138,7 @@ public class MyMenu implements ActionListener {
             if(action.equalsIgnoreCase("vlist")){
                 vendedores.lista();
             }else if(action.equalsIgnoreCase("vadd")){
-                vendedores.editar(null);
+                vendedores.editar("");
             }
             frame.repaint();
         }else if(action.equalsIgnoreCase("rclientes")){

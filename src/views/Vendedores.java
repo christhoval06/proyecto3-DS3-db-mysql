@@ -1,5 +1,8 @@
+package views;
+
 import modelos.Item;
 import modelos.Vendedor;
+import utils.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +36,7 @@ public class Vendedores extends FormPanel {
 
     public void lista() {
         removeAll();
-        System.out.println("Vendedores Lista");
+        System.out.println("views.Vendedores Lista");
 
         Font fnt = new Font(null, Font.BOLD, 18);
         JLabel label = new JLabel("Buscar:");
@@ -47,6 +50,14 @@ public class Vendedores extends FormPanel {
         qtm.setQuery("select nombre,apellido,codigo,FORMAT(venta_mensual,2) as Venta, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from vendedor;");
         final JTable table = new JTable(qtm);
         JScrollPane scrollpane = new JScrollPane(table);
+        scrollpane.setColumnHeader(new JViewport() {
+            @Override
+            public Dimension getPreferredSize() {
+                Dimension d = super.getPreferredSize();
+                d.height = 32;
+                return d;
+            }
+        });
         scrollpane.setBounds(40, 70, 720, 450);
         scrollpane.setBackground(pallet.get("color1"));
         table.addMouseListener(new MouseAdapter() {
@@ -59,7 +70,7 @@ public class Vendedores extends FormPanel {
                     new Dialogs(frame, pallet).confirm(String.format("Quieres editar al Vendedor %s?", codigo), "NO", "SI", new Callable<Void>() {
                         @Override
                         public Void call() throws Exception {
-                            editar(codigo);
+                            editar("");
                             return null;
                         }
                     });
@@ -102,7 +113,7 @@ public class Vendedores extends FormPanel {
             }
         });
         add(query);
-        ImageButton btn = new ImageButton("IR", pallet.get("color1"), pallet.get("color2"));
+        ImageButton btn = new ImageButton("IR", pallet.get("color1"), pallet.get("color2"), pallet.get("color5"));
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buscarClientes(table, qtm, query.getText().trim(), null);
@@ -139,18 +150,40 @@ public class Vendedores extends FormPanel {
         return departamentos;
     }
 
+    private void buscarParaEditar(){
+        Vendedor v = new Vendedor(getForm());
+        editar(v.getCodigo());
+    }
+
     public void editar(String codigo) {
-        removeAll();
         Vendedor vendedor = null;
-        if (codigo != null){
+        if (!codigo.isEmpty()){
             vendedor = new Vendedor(db.select(String.format("SELECT * FROM vendedor WHERE codigo='%s';", codigo)));
-            System.out.println("vendedor: " + vendedor.toString());
         }else
             vendedor = new Vendedor();
 
+        editar(vendedor);
+    }
+
+    private void editar(Vendedor vendedor){
+        removeAll();
         Font fnt = new Font(null, Font.BOLD, 18);
+        final String accion = vendedor.isEmpty() ? "GUARDAR" : "ACTUALIZAR";
         createTextFieldHidden("vendedorid", String.valueOf(vendedor.getVendedorid()), 75);
-        createTextFieldAndLabel("codigo", vendedor.getCodigo(), 75, fnt);
+        createTextFieldAndLabel("codigo", vendedor.getCodigo(), 75, fnt).addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarParaEditar();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         createTextFieldAndLabel("nombre", vendedor.getNombre(), 120, fnt);
         createTextFieldAndLabel("apellido", vendedor.getApellido(), 165, fnt);
         createComboBoxAndLabel("departamento", vendedor.getDepartamento(), 210, fnt, getDepartamentos());
@@ -159,25 +192,34 @@ public class Vendedores extends FormPanel {
         createTextFieldAndLabel("venta anual", String.valueOf(vendedor.getVenta_anual()), 345, fnt);
         createCheckBoxdAndLabel("activo", vendedor.getActivo() == 1, 390, fnt);
 
-        ImageButton btn = new ImageButton(vendedor.isEmpty() ? "GUARDAR" : "ACTUALIZAR", pallet.get("color1"), pallet.get("color2"));
-        btn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new Dialogs(frame, pallet).confirm(String.format("Quieres %s al Cliente?", ((ImageButton) e.getSource()).getText()), "NO", "SI", new Callable<Void>() {
+        createBtn("BUSCAR", new Point(640, 75), new Dimension(120, 40), new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                buscarParaEditar();
+                return null;
+            }
+        });
+
+        createBtn(accion, new Point(vendedor.isEmpty() ? 440 : 230, 440), new Dimension(190, 40), new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                new Dialogs(frame, pallet).confirm(String.format("Quieres %s al Vendedor?", accion), "NO", "SI", new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         save();
                         return null;
                     }
                 });
+                return null;
             }
         });
-        btn.setBounds(vendedor.toString().isEmpty() ? 440 : 230, 440, 190, 40);
-        add(btn);
+
+
         if (!vendedor.isEmpty()) {
             final String vendedorNombre = vendedor.toString();
-            btn = new ImageButton("ELIMINAR", pallet.get("color1"), pallet.get("color2"));
-            btn.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
+            createBtn("ELIMINAR", new Point(440, 440), new Dimension(190, 40), new Callable<Void>() {
+                @Override
+                public Void call() throws Exception {
                     new Dialogs(frame, pallet).confirm(String.format("Quieres ELIMINAR a %s?", vendedorNombre), "NO", "SI", new Callable<Void>() {
                         @Override
                         public Void call() throws Exception {
@@ -185,13 +227,13 @@ public class Vendedores extends FormPanel {
                             return null;
                         }
                     });
+                    return null;
                 }
             });
-            btn.setBounds(440, 440, 190, 40);
-            add(btn);
         }
 
         repaint();
+
     }
 
     private void save() {

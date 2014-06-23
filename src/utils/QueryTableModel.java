@@ -1,3 +1,5 @@
+package utils;
+
 import javax.swing.table.AbstractTableModel;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

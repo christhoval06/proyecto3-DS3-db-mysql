@@ -1,7 +1,8 @@
+import utils.DB;
+import utils.MyMenu;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.HashMap;
@@ -21,7 +22,8 @@ public class Proyecto3 extends JFrame {
 
     public Proyecto3() {
         pallet = new HashMap<String, Color>();
-        palleteLila();
+        //palleteLila();
+        palleteRiver();
         final DB database = new DB();
         setTitle(String.format("Tienda %s", VERSION));
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

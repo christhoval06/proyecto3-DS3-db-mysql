@@ -1,5 +1,8 @@
+package views;
+
 import modelos.Cliente;
 import modelos.Item;
+import utils.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +38,7 @@ public class Clientes extends FormPanel {
 
     public void lista() {
         removeAll();
-        System.out.println("Clientes Lista");
+        System.out.println("views.Clientes Lista");
 
         Font fnt = new Font(null, Font.BOLD, 18);
         JLabel label = new JLabel("Buscar:");
@@ -103,7 +106,7 @@ public class Clientes extends FormPanel {
             }
         });
         add(query);
-        ImageButton btn = new ImageButton("IR", pallet.get("color1"), pallet.get("color2"));
+        ImageButton btn = new ImageButton("IR", pallet.get("color1"), pallet.get("color2"), pallet.get("color5"));
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buscarClientes(table, qtm, query.getText().trim(), null);
@@ -138,45 +141,75 @@ public class Clientes extends FormPanel {
         return provincias;
     }
 
-    public void editar(String cedula) {
-        removeAll();
+    private void buscarParaEditar(){
+        Cliente cliente = new Cliente(getForm());
+        editar(cliente.getCedula());
+    }
+
+    public void editar(String cedula){
         Cliente cliente = null;
         if (cedula != null){
             cliente = new Cliente(db.select(String.format("SELECT * FROM cliente WHERE cedula='%s';", cedula)));
         }else
             cliente = new Cliente();
-        System.out.println(cliente.toString());
-        System.out.println("cliente " + String.valueOf(cliente.isEmpty()));
+
+        editar(cliente);
+    }
+
+    private void editar(Cliente cliente) {
+        removeAll();
         Font fnt = new Font(null, Font.BOLD, 18);
         createTextFieldHidden("clienteid", String.valueOf(cliente.getClienteid()), 75);
-        createTextFieldAndLabel("nombre", cliente.getNombre(), 75, fnt);
-        createTextFieldAndLabel("apellido", cliente.getApellido(), 120, fnt);
-        createTextFieldAndLabel("cedula", cliente.getCedula(), 165, fnt);
+        createTextFieldAndLabel("cedula", cliente.getCedula(), 75, fnt).addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarParaEditar();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        createTextFieldAndLabel("nombre", cliente.getNombre(), 120, fnt);
+        createTextFieldAndLabel("apellido", cliente.getApellido(), 165, fnt);
         createTextFieldAndLabel("dirección", cliente.getDireccion(), 210, fnt);
         createTextFieldAndLabel("télefono", cliente.getTelefono(), 255, fnt);
         createComboBoxAndLabel("provincia", cliente.getProvincia(), 300, fnt, getProvincias());
         createTextFieldAndLabel("compra anual", String.valueOf(cliente.getCompra_anual()), 345, fnt);
         createCheckBoxdAndLabel("activo", cliente.getActivo() == 1, 390, fnt);
+        createBtn("BUSCAR", new Point(640, 75), new Dimension(120, 40), new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                buscarParaEditar();
+                return null;
+            }
+        });
 
-        ImageButton btn = new ImageButton(cliente.isEmpty() ? "GUARDAR" : "ACTUALIZAR", pallet.get("color1"), pallet.get("color2"));
-        btn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new Dialogs(frame, pallet).confirm(String.format("Quieres %s al Cliente?", ((ImageButton) e.getSource()).getText()), "NO", "SI", new Callable<Void>() {
+        final String accion = cliente.isEmpty() ? "GUARDAR" : "ACTUALIZAR";
+
+        createBtn(accion, new Point(cliente.isEmpty() ? 440 : 230, 440), new Dimension(190, 40), new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                new Dialogs(frame, pallet).confirm(String.format("Quieres %s al Cliente?", accion), "NO", "SI", new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         save();
                         return null;
                     }
                 });
+                return null;
             }
         });
-        btn.setBounds(cliente.toString().isEmpty() ? 440 : 230, 440, 190, 40);
-        add(btn);
+
         if (!cliente.isEmpty()) {
             final String clienteNombre = cliente.toString();
-            btn = new ImageButton("ELIMINAR", pallet.get("color1"), pallet.get("color2"));
-            btn.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
+            createBtn("ELIMINAR", new Point(440, 440), new Dimension(190, 40), new Callable<Void>() {
+                @Override
+                public Void call() throws Exception {
                     new Dialogs(frame, pallet).confirm(String.format("Quieres ELIMINAR a %s?", clienteNombre), "NO", "SI", new Callable<Void>() {
                         @Override
                         public Void call() throws Exception {
@@ -184,10 +217,9 @@ public class Clientes extends FormPanel {
                             return null;
                         }
                     });
+                    return null;
                 }
             });
-            btn.setBounds(440, 440, 190, 40);
-            add(btn);
         }
 
         repaint();
