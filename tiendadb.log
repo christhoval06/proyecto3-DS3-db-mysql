@@ -259,3 +259,25 @@
 23/06/2014 06:25:37 : sql -> select nombre,apellido,cedula,FORMAT(compra_anual,2) as Compra, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from cliente;
 23/06/2014 06:25:40 : -------- MySQL JDBC Connection Testing ------------
 23/06/2014 06:25:40 : sql -> SELECT * FROM cliente WHERE cedula='5-706-1803';
+23/06/2014 06:34:58 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:34:58 : MySQL JDBC Driver Registered!
+23/06/2014 06:34:58 : Error -> Connection Failed! Check output console
+23/06/2014 06:35:38 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:35:38 : MySQL JDBC Driver Registered!
+23/06/2014 06:35:38 : Error -> Connection Failed! Check output console
+23/06/2014 06:36:17 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:36:17 : MySQL JDBC Driver Registered!
+23/06/2014 06:36:17 : Error -> Connection Failed! Check output console
+23/06/2014 06:36:51 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:36:51 : MySQL JDBC Driver Registered!
+23/06/2014 06:36:51 : Error -> Connection Failed! Check output console
+23/06/2014 06:37:20 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:37:20 : MySQL JDBC Driver Registered!
+23/06/2014 06:37:20 : Error -> Connection Failed! Check output console
+23/06/2014 06:38:09 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:38:09 : MySQL JDBC Driver Registered!
+23/06/2014 06:38:09 : You made it, take control your database now!
+23/06/2014 06:38:11 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:38:11 : sql -> select nombre,apellido,cedula,FORMAT(compra_anual,2) as Compra, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from cliente;
+23/06/2014 06:38:19 : -------- MySQL JDBC Connection Testing ------------
+23/06/2014 06:38:19 : sql -> SELECT * FROM cliente WHERE cedula='E-963-56';

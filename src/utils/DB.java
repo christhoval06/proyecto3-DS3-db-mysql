@@ -6,14 +6,16 @@ package utils; /**
  * To change this template use File | Settings | File Templates.
  */
 
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Created by Christhoval on 20/5/14.
  */
 public class DB {
 
-    private String dbname = "tiendadb", usr = "root", psw = "none123", SQL = "", ERROR = null, logFile = "tiendadb.log";;
+    private String url = "mysql://localhost:3306", dbname = "tiendadb", usr = "root", psw = "none123", SQL = "", ERROR = null, logFile = "tiendadb.log";
 
     private Connection con;
     private Statement stmt;
@@ -44,6 +46,16 @@ public class DB {
     }
 
     private void init() {
+        Properties configFile = new Properties();
+        try {
+            configFile.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
+            url = configFile.getProperty("url");
+            dbname = configFile.getProperty("dbname");
+            usr = configFile.getProperty("usr");
+            psw = configFile.getProperty("psw");
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
         log = new Logger(logFile, DEBUG);
         abrir();
     }
@@ -80,7 +92,7 @@ public class DB {
 
             log.log("MySQL JDBC Driver Registered!");
             try {
-                con = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s", dbname), usr, psw);
+                con = DriverManager.getConnection(String.format("jdbc:%s/%s", url, dbname), usr, psw);
             } catch (SQLException e) {
                 log.log("Error -> " + "Connection Failed! Check output console");
                 e.printStackTrace();
