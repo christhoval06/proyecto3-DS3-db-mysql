@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="TiendaDB" product="MySQL" version="5.5.37-1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )" uuid="db8b4c87-c167-4a5b-adab-c33f18fce134">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <synchronize>true</synchronize>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://localhost/tiendadb</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfc4dfc5dfc4dfcfdf9bdf98df99</user-password>
+    <schema-pattern>tiendadb.*</schema-pattern>
+    <default-schemas>tiendadb.*</default-schemas>
+    <default-dialect>MySQL</default-dialect>
+    <driver-properties>
+      <property name="characterEncoding" value="utf-8"/>
+      <property name="characterSetResults" value="utf-8"/>
+    </driver-properties>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/mysql-connector-java-5.1.29-bin.jar!/</url>
+      </library>
+      <library>
+        <url>file://$PROJECT_DIR$/mysql-connector-license.txt</url>
+      </library>
+    </libraries>
+    <schema name="" catalog="tiendadb"/>
+    <table name="cliente" schema="" catalog="tiendadb" type="TABLE">
+      <column name="clienteid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="cedula" sqlType="VARCHAR" length="15" precision="0" nullable="false" jdbcType="12"/>
+      <column name="direccion" sqlType="VARCHAR" length="50" precision="0" nullable="true" jdbcType="12"/>
+      <column name="telefono" sqlType="VARCHAR" length="11" precision="0" nullable="true" jdbcType="12"/>
+      <column name="provincia" sqlType="VARCHAR" length="2" precision="0" nullable="true" jdbcType="12"/>
+      <column name="compra_anual" sqlType="DECIMAL" length="9" precision="2" nullable="true" jdbcType="3"/>
+      <column name="activo" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="clienteid"/>
+      <index name="unique_cedula" unique="true" columns="cedula"/>
+    </table>
+    <table name="vendedor" schema="" catalog="tiendadb" type="TABLE">
+      <column name="vendedorid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="codigo" sqlType="VARCHAR" length="4" precision="0" nullable="false" jdbcType="12"/>
+      <column name="nombre" sqlType="VARCHAR" length="20" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido" sqlType="VARCHAR" length="20" precision="0" nullable="false" jdbcType="12"/>
+      <column name="departamento" sqlType="VARCHAR" length="2" precision="0" nullable="true" jdbcType="12"/>
+      <column name="cargo" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12"/>
+      <column name="venta_mensual" sqlType="DECIMAL" length="9" precision="2" nullable="true" jdbcType="3" def="MC4wMA=="/>
+      <column name="venta_anual" sqlType="DECIMAL" length="9" precision="2" nullable="true" jdbcType="3" def="MC4wMA=="/>
+      <column name="activo" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="vendedorid"/>
+      <index name="unique_codigo" unique="true" columns="codigo"/>
+    </table>
+  </data-source>
+</component>

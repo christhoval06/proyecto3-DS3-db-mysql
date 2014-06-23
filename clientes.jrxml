@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clientes" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0bf55cb7-5e4b-4f05-94da-b17b90d9fce0">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<parameter name="ORDEN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[cedula]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from cliente order by $P!{ORDEN}]]>
+	</queryString>
+	<field name="clienteid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="provincia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="compra_anual" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="activo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="572" height="29" uuid="8d19367a-356d-4065-a46a-6fa259aaadda"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Lista de Clientes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="40" width="572" height="1" uuid="b45d9592-a371-43bc-961e-90998baafa3c"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="28" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="3" width="100" height="20" uuid="6778911a-98c2-46a2-a1d5-9aade3b2b345"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Cédula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="3" width="100" height="20" uuid="c9c588fc-2c02-4497-ab13-08a3cf02733c"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="3" width="100" height="20" uuid="c0e728f9-0056-41a3-a904-2d247166b8cc"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="3" width="100" height="20" uuid="a1326211-9968-4964-81e2-f8298bff8681"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Compra Anual]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="3" width="100" height="15" uuid="af03b8b9-26ee-4adb-80b5-fa71ef931fb2"/>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="3" width="100" height="15" uuid="d80b9a58-70ad-4935-bf08-e8f5d108e9b9"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="3" width="100" height="15" uuid="5b0c309c-d6cf-4282-bad1-bf4174e73999"/>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="3" width="100" height="15" uuid="591980dd-168c-4aba-a9d7-754f194f8736"/>
+				<textFieldExpression><![CDATA[$F{compra_anual}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
