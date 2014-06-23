@@ -17,10 +17,7 @@
     </driver-properties>
     <libraries>
       <library>
-        <url>jar://$PROJECT_DIR$/mysql-connector-java-5.1.29-bin.jar!/</url>
-      </library>
-      <library>
-        <url>file://$PROJECT_DIR$/mysql-connector-license.txt</url>
+        <url>file://$PROJECT_DIR$/lib/mysql-connector-java-5.1.29-bin.jar</url>
       </library>
     </libraries>
     <schema name="" catalog="tiendadb"/>
