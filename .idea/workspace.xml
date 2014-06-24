@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20e87425-37a6-4c97-a4b3-9a8de74734e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/DB.java" afterPath="$PROJECT_DIR$/src/utils/DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/Dialogs.java" afterPath="$PROJECT_DIR$/src/utils/Dialogs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Proyecto3.java" afterPath="$PROJECT_DIR$/src/Proyecto3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Vendedores.java" afterPath="$PROJECT_DIR$/src/views/Vendedores.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config.properties" afterPath="$PROJECT_DIR$/src/config.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tiendadb.log" afterPath="$PROJECT_DIR$/tiendadb.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -13,7 +15,7 @@
     <file path="/a.sql" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403535220870" ignored="false" />
     <file path="/dummy.sql" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403535218835" ignored="false" />
     <file path="/def.sql" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403038051924" ignored="false" />
-    <file path="/Proyecto3.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403563961436" ignored="false" />
+    <file path="/Proyecto3.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403621026855" ignored="false" />
     <file path="/MenuListener.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403289239122" ignored="false" />
     <file path="/MyMenu.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403562747909" ignored="false" />
     <file path="/TiendaDB" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403535185893" ignored="false" />
@@ -25,12 +27,14 @@
     <file path="/FormPanel.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403565444574" ignored="false" />
     <file path="/tiendadb.vendedor" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403535261335" ignored="false" />
     <file path="/Vendedor.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403558214581" ignored="false" />
-    <file path="/Vendedores.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403565295423" ignored="false" />
+    <file path="/Vendedores.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403632669590" ignored="false" />
     <file path="/Provincia.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403551056349" ignored="false" />
     <file path="/Departamentos.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403550896929" ignored="false" />
     <file path="/MyComboBoxModel.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403553778001" ignored="false" />
-    <file path="/Dummy.txt" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403565993548" ignored="false" />
+    <file path="/Dummy.txt" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403620708475" ignored="false" />
     <file path="/ImageButton.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403564512352" ignored="false" />
+    <file path="/config.properties" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403621242417" ignored="false" />
+    <file path="/SQLTable.java" changelist="20e87425-37a6-4c97-a4b3-9a8de74734e4" time="1403626414561" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +54,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -86,7 +91,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -99,16 +103,25 @@
       <file leaf-file-name="Proyecto3.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Proyecto3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="36" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
+            <state line="17" column="35" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DB.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Dialogs.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/Dialogs.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="25" selection-start="2500" selection-end="2500" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DB.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/DB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="61" selection-start="867" selection-end="873" vertical-scroll-proportion="0.26132405">
+            <state line="55" column="98" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,29 +129,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Vendedores.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Vendedores.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/Vendedores.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="231" column="17" selection-start="8871" selection-end="9481" vertical-scroll-proportion="0.0">
+            <state line="70" column="41" selection-start="2481" selection-end="2481" vertical-scroll-proportion="1.5775402">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5362#5368#0" expanded="true" />
-                <element signature="e#7989#8172#0" expanded="true" />
-                <element signature="e#8161#8162#0" expanded="true" />
-                <element signature="e#8274#8756#0" expanded="true" />
-                <element signature="e#8482#8701#0" expanded="true" />
-                <element signature="e#8682#8683#0" expanded="true" />
-                <element signature="e#8745#8746#0" expanded="true" />
-                <element signature="e#8938#9479#0" expanded="true" />
-                <element signature="e#9165#9412#0" expanded="true" />
-                <element signature="e#9389#9390#0" expanded="true" />
-                <element signature="e#9464#9465#0" expanded="true" />
-                <marker date="1403565864819" expanded="true" signature="1281:1411" placeholder="select nombr..vendedor..." />
-                <marker date="1403565864819" expanded="true" signature="2949:3091" placeholder="select nombr..vendedor..." />
-                <marker date="1403565864819" expanded="true" signature="4812:5043" placeholder="select nombr..vendedor..." />
-                <marker date="1403565864819" expanded="true" signature="10344:10499" placeholder="UPDATE vende..." />
-                <marker date="1403565864819" expanded="true" signature="10827:10983" placeholder="INSERT INTO ..." />
-                <marker date="1403565864819" expanded="true" signature="11800:11840" placeholder="delete from ..." />
+                <element signature="e#4243#4420#0" expanded="true" />
+                <element signature="e#4409#4410#0" expanded="true" />
+                <element signature="e#5221#5227#0" expanded="true" />
+                <element signature="e#7848#8031#0" expanded="true" />
+                <element signature="e#8020#8021#0" expanded="true" />
+                <element signature="e#8133#8615#0" expanded="true" />
+                <element signature="e#8341#8560#0" expanded="true" />
+                <element signature="e#8541#8542#0" expanded="true" />
+                <element signature="e#8604#8605#0" expanded="true" />
+                <element signature="e#8797#9338#0" expanded="true" />
+                <element signature="e#9024#9271#0" expanded="true" />
+                <element signature="e#9248#9249#0" expanded="true" />
+                <element signature="e#9323#9324#0" expanded="true" />
+                <marker date="1403632671896" expanded="true" signature="2807:2949" placeholder="select nombr..vendedor..." />
+                <marker date="1403632671896" expanded="true" signature="4671:4902" placeholder="select nombr..vendedor..." />
+                <marker date="1403632671896" expanded="true" signature="10203:10358" placeholder="UPDATE vende..." />
+                <marker date="1403632671896" expanded="true" signature="10686:10842" placeholder="INSERT INTO ..." />
+                <marker date="1403632671896" expanded="true" signature="11659:11699" placeholder="delete from ..." />
               </folding>
             </state>
           </provider>
@@ -148,20 +161,7 @@
         <entry file="file://$PROJECT_DIR$/src/views/Clientes.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="221" column="15" selection-start="8942" selection-end="8942" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5014#5020#0" expanded="true" />
-                <element signature="e#7380#7563#0" expanded="true" />
-                <element signature="e#7552#7553#0" expanded="true" />
-                <element signature="e#7741#8222#0" expanded="true" />
-                <element signature="e#7948#8167#0" expanded="true" />
-                <element signature="e#8148#8149#0" expanded="true" />
-                <element signature="e#8211#8212#0" expanded="true" />
-                <element signature="e#8400#8940#0" expanded="true" />
-                <element signature="e#8626#8873#0" expanded="true" />
-                <element signature="e#8850#8851#0" expanded="true" />
-                <element signature="e#8925#8926#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -169,7 +169,7 @@
       <file leaf-file-name="config.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="8" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+            <state line="5" column="11" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -202,8 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tiendadb.log" />
-        <option value="$PROJECT_DIR$/src/modelos/Cliente.java" />
         <option value="$PROJECT_DIR$/src/DB.java" />
         <option value="$PROJECT_DIR$/src/modelos/Vendedor.java" />
         <option value="$PROJECT_DIR$/src/Clientes.java" />
@@ -211,13 +209,15 @@
         <option value="$PROJECT_DIR$/tiendadb.sql" />
         <option value="db-console:/1dc00b5/db8b4c87-c167-4a5b-adab-c33f18fce134/" />
         <option value="$PROJECT_DIR$/src/utils/MyMenu.java" />
-        <option value="$PROJECT_DIR$/src/Proyecto3.java" />
         <option value="$PROJECT_DIR$/src/utils/ImageButton.java" />
         <option value="$PROJECT_DIR$/src/utils/FormPanel.java" />
-        <option value="$PROJECT_DIR$/src/views/Vendedores.java" />
         <option value="$PROJECT_DIR$/src/views/Clientes.java" />
-        <option value="$PROJECT_DIR$/src/config.properties" />
         <option value="$PROJECT_DIR$/src/utils/DB.java" />
+        <option value="$PROJECT_DIR$/src/utils/Dialogs.java" />
+        <option value="$PROJECT_DIR$/src/Proyecto3.java" />
+        <option value="$PROJECT_DIR$/src/config.properties" />
+        <option value="$PROJECT_DIR$/src/utils/SQLTable.java" />
+        <option value="$PROJECT_DIR$/src/views/Vendedores.java" />
       </list>
     </option>
   </component>
@@ -254,8 +254,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -327,9 +327,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -373,6 +373,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -399,19 +412,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -506,7 +506,11 @@
       <created>1403566000991</created>
       <updated>1403566000991</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mejorandolos metodos del form">
+      <created>1403566720231</created>
+      <updated>1403566720231</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -609,30 +613,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/1dc00b5/db8b4c87-c167-4a5b-adab-c33f18fce134/tiendadb..vendedor">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="46" selection-start="72" selection-end="72" vertical-scroll-proportion="0.030120483">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Dialogs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="76" selection-start="1761" selection-end="1856" vertical-scroll-proportion="0.111692846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modelos/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="26" selection-start="504" selection-end="504" vertical-scroll-proportion="0.7055749">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/MyComboBoxModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="31" selection-start="717" selection-end="717" vertical-scroll-proportion="0.530541">
@@ -658,23 +638,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tiendadb.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="-1.2873135">
-          <folding />
-        </state>
+        <state line="17" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="-1.2873135" />
       </provider>
     </entry>
     <entry file="dbDummy://db-console:/1dc00b5/db8b4c87-c167-4a5b-adab-c33f18fce134/">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="31" selection-start="0" selection-end="188" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/MyMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="35" selection-start="5292" selection-end="5292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="31" selection-start="0" selection-end="188" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ImageButton.java">
@@ -696,42 +665,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Proyecto3.java">
+    <entry file="file://$PROJECT_DIR$/src/utils/MyMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="36" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
+        <state line="140" column="35" selection-start="5292" selection-end="5292" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Vendedores.java">
+    <entry file="file://$PROJECT_DIR$/src/utils/Dialogs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="17" selection-start="8871" selection-end="9481" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5362#5368#0" expanded="true" />
-            <element signature="e#7989#8172#0" expanded="true" />
-            <element signature="e#8161#8162#0" expanded="true" />
-            <element signature="e#8274#8756#0" expanded="true" />
-            <element signature="e#8482#8701#0" expanded="true" />
-            <element signature="e#8682#8683#0" expanded="true" />
-            <element signature="e#8745#8746#0" expanded="true" />
-            <element signature="e#8938#9479#0" expanded="true" />
-            <element signature="e#9165#9412#0" expanded="true" />
-            <element signature="e#9389#9390#0" expanded="true" />
-            <element signature="e#9464#9465#0" expanded="true" />
-            <marker date="1403565864819" expanded="true" signature="1281:1411" placeholder="select nombr..vendedor..." />
-            <marker date="1403565864819" expanded="true" signature="2949:3091" placeholder="select nombr..vendedor..." />
-            <marker date="1403565864819" expanded="true" signature="4812:5043" placeholder="select nombr..vendedor..." />
-            <marker date="1403565864819" expanded="true" signature="10344:10499" placeholder="UPDATE vende..." />
-            <marker date="1403565864819" expanded="true" signature="10827:10983" placeholder="INSERT INTO ..." />
-            <marker date="1403565864819" expanded="true" signature="11800:11840" placeholder="delete from ..." />
-          </folding>
+        <state line="70" column="25" selection-start="2500" selection-end="2500" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Proyecto3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="35" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+        <state line="5" column="11" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/DB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="98" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/jdk1.7.0_45/src.zip!/javax/swing/JScrollPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="320" column="37" selection-start="10915" selection-end="10915" vertical-scroll-proportion="0.35766423">
           <folding />
         </state>
       </provider>
@@ -739,28 +712,32 @@
     <entry file="file://$PROJECT_DIR$/src/views/Clientes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="221" column="15" selection-start="8942" selection-end="8942" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5014#5020#0" expanded="true" />
-            <element signature="e#7380#7563#0" expanded="true" />
-            <element signature="e#7552#7553#0" expanded="true" />
-            <element signature="e#7741#8222#0" expanded="true" />
-            <element signature="e#7948#8167#0" expanded="true" />
-            <element signature="e#8148#8149#0" expanded="true" />
-            <element signature="e#8211#8212#0" expanded="true" />
-            <element signature="e#8400#8940#0" expanded="true" />
-            <element signature="e#8626#8873#0" expanded="true" />
-            <element signature="e#8850#8851#0" expanded="true" />
-            <element signature="e#8925#8926#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/DB.java">
+    <entry file="file://$PROJECT_DIR$/src/views/Vendedores.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="61" selection-start="867" selection-end="873" vertical-scroll-proportion="0.26132405">
+        <state line="70" column="41" selection-start="2481" selection-end="2481" vertical-scroll-proportion="1.5775402">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4243#4420#0" expanded="true" />
+            <element signature="e#4409#4410#0" expanded="true" />
+            <element signature="e#5221#5227#0" expanded="true" />
+            <element signature="e#7848#8031#0" expanded="true" />
+            <element signature="e#8020#8021#0" expanded="true" />
+            <element signature="e#8133#8615#0" expanded="true" />
+            <element signature="e#8341#8560#0" expanded="true" />
+            <element signature="e#8541#8542#0" expanded="true" />
+            <element signature="e#8604#8605#0" expanded="true" />
+            <element signature="e#8797#9338#0" expanded="true" />
+            <element signature="e#9024#9271#0" expanded="true" />
+            <element signature="e#9248#9249#0" expanded="true" />
+            <element signature="e#9323#9324#0" expanded="true" />
+            <marker date="1403632671896" expanded="true" signature="2807:2949" placeholder="select nombr..vendedor..." />
+            <marker date="1403632671896" expanded="true" signature="4671:4902" placeholder="select nombr..vendedor..." />
+            <marker date="1403632671896" expanded="true" signature="10203:10358" placeholder="UPDATE vende..." />
+            <marker date="1403632671896" expanded="true" signature="10686:10842" placeholder="INSERT INTO ..." />
+            <marker date="1403632671896" expanded="true" signature="11659:11699" placeholder="delete from ..." />
           </folding>
         </state>
       </provider>

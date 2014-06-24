@@ -15,15 +15,14 @@ import java.util.HashMap;
  * To change this template use File | Settings | File Templates.
  */
 public class Proyecto3 extends JFrame {
-    private String VERSION = "1.0.0";
+    private String VERSION = "1.0.4";
     private int FRAME_W = 800, FRAME_H = 600;
 
     private HashMap<String, Color> pallet;
 
     public Proyecto3() {
         pallet = new HashMap<String, Color>();
-        //palleteLila();
-        palleteRiver();
+        palleteLila();
         final DB database = new DB();
         setTitle(String.format("Tienda %s", VERSION));
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

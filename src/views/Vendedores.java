@@ -36,7 +36,7 @@ public class Vendedores extends FormPanel {
 
     public void lista() {
         removeAll();
-        System.out.println("views.Vendedores Lista");
+        System.out.println("Vendedores Lista");
 
         Font fnt = new Font(null, Font.BOLD, 18);
         JLabel label = new JLabel("Buscar:");
@@ -63,14 +63,12 @@ public class Vendedores extends FormPanel {
         table.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent me) {
                 JTable table = (JTable) me.getSource();
-                Point p = me.getPoint();
-                int row = table.rowAtPoint(p);
                 if (me.getClickCount() == 2) {
                     final String codigo = (String) table.getModel().getValueAt(table.getSelectedRow(), 2);
                     new Dialogs(frame, pallet).confirm(String.format("Quieres editar al Vendedor %s?", codigo), "NO", "SI", new Callable<Void>() {
                         @Override
                         public Void call() throws Exception {
-                            editar("");
+                            editar(codigo);
                             return null;
                         }
                     });
@@ -80,8 +78,7 @@ public class Vendedores extends FormPanel {
         table.getTableHeader().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("header click");
-                qtm.setQuery(String.format("select nombre,apellido,codigo,FORMAT(venta_mensual,2) as Venta, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from vendedor ORDER BY %s;",table.getColumnName(table.columnAtPoint(e.getPoint()))));
+                qtm.setQuery(String.format("select nombre,apellido,codigo,FORMAT(venta_mensual,2) as Venta, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from vendedor ORDER BY %s;", table.getColumnName(table.columnAtPoint(e.getPoint()))));
             }
         });
 

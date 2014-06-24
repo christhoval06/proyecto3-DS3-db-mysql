@@ -52,7 +52,7 @@ public class Dialogs extends JDialog {
         titulo.setForeground(pallet.get("color3"));
         add(titulo);
 
-        ImageButton btn = new ImageButton(btn1, pallet.get("color1"), pallet.get("color3"));
+        ImageButton btn = new ImageButton(btn1, pallet.get("color1"), pallet.get("color3"), pallet.get("color5"));
         btn.setBounds(20, 110, 120, 40);
         btn.addActionListener(new ActionListener() {
             @Override
@@ -68,7 +68,7 @@ public class Dialogs extends JDialog {
         });
         add(btn);
 
-        btn = new ImageButton(btn2, pallet.get("color1"), pallet.get("color3"));
+        btn = new ImageButton(btn2, pallet.get("color1"), pallet.get("color3"), pallet.get("color5"));
         btn.setBounds(248, 110, 120, 40);
         btn.addActionListener(new ActionListener() {
             @Override
@@ -105,7 +105,7 @@ public class Dialogs extends JDialog {
         add(titulo);
 
         ImageButton btn;
-        add(btn = new ImageButton(btnLabel, pallet.get("color1"), pallet.get("color3")));
+        add(btn = new ImageButton(btnLabel, pallet.get("color1"), pallet.get("color3"), pallet.get("color5")));
         btn.setBounds(248, 110, 120, 40);
         btn.addActionListener(new ActionListener() {
             @Override
