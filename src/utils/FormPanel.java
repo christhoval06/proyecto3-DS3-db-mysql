@@ -21,9 +21,11 @@ public class FormPanel extends JPanel {
 
     private HashMap<String, Color> pallet;
     private HashMap<String, Object> form;
+    private Pallets palletsColors;
 
-    public FormPanel(HashMap<String, Color> p) {
-        pallet = p;
+    public FormPanel(Pallets p) {
+        palletsColors = p;
+        pallet = palletsColors.getPallet();
     }
 
     public void createTextFieldHidden(String nombre, String value, int y){
@@ -33,9 +35,13 @@ public class FormPanel extends JPanel {
         field.setVisible(false);
         add(field);
     }
+    public ImageButton createBtn(String text, Point xy, Dimension wh, final Callable<Void> callable){
+        return  createBtn(text, xy, wh, callable, null);
+    }
 
-    public void createBtn(String text, Point xy, Dimension wh, final Callable<Void> callable){
-        ImageButton btn = new ImageButton(text, pallet.get("color1"), pallet.get("color2"), pallet.get("color5"));
+    public ImageButton createBtn(String text, Point xy, Dimension wh, final Callable<Void> callable, HashMap<String, Color> p){
+        HashMap<String, Color> paleta = p!=null ? p : pallet;
+        ImageButton btn = new ImageButton(text, paleta.get("color1"), paleta.get("color2"), paleta.get("color5"));
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -48,6 +54,7 @@ public class FormPanel extends JPanel {
         btn.setSize(wh);
         btn.setLocation(xy);
         add(btn);
+        return btn;
     }
 
     public JTextField createTextFieldAndLabel(String nombre, String value, int y, Font fnt){

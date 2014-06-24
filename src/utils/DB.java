@@ -7,6 +7,9 @@ package utils; /**
  */
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Properties;
 
@@ -15,13 +18,14 @@ import java.util.Properties;
  */
 public class DB {
 
-    private String url = "mysql://localhost:3306", dbname = "tiendadb", usr = "root", psw = "none123", SQL = "", ERROR = null, logFile = "tiendadb.log";
+    private String host = "localhost", port="3306", dbname = "tiendadb", user = "root", pass = "none123", SQL = "", ERROR = null, logFile = "tiendadb.log";
 
     private Connection con;
     private Statement stmt;
     private ResultSet rs;
     private boolean isOpen = false, isConnected = false, DEBUG = true;
     private Logger log;
+    private ConfigurationManager config = null;
 
     public DB() {
         DEBUG = true;
@@ -46,18 +50,38 @@ public class DB {
     }
 
     private void init() {
-        Properties configFile = new Properties();
         try {
-            configFile.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
-            url = configFile.getProperty("url");
-            dbname = configFile.getProperty("dbname");
-            usr = configFile.getProperty("usr");
-            psw = configFile.getProperty("psw");
-        } catch (IOException e1) {
-            e1.printStackTrace();
+            URL resource = getClass().getClassLoader().getResource("config.properties");
+            (Paths.get(resource.toURI()).toFile()).getPath();
+            System.out.println((Paths.get(resource.toURI()).toFile()).getPath());
+            config = new ConfigurationManager((Paths.get(resource.toURI()).toFile()).getPath(), false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
+
+        host = getConfig("host", host);
+        port = getConfig("port", port);
+        dbname = getConfig("dbname", dbname);
+        user = getConfig("user", user);
+        pass = getConfig("pass", pass);
+        logFile = getConfig("log", logFile);
         log = new Logger(logFile, DEBUG);
         abrir();
+    }
+
+    public String getConfig(String name, String defult){
+       return config.getProperty(name, defult);
+    }
+
+    public void setConfig(String name, String value){
+       config.setProperty(name, value);
+        try {
+            config.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ResultSet select(String sql) {
@@ -92,7 +116,7 @@ public class DB {
 
             log.log("MySQL JDBC Driver Registered!");
             try {
-                con = DriverManager.getConnection(String.format("jdbc:%s/%s", url, dbname), usr, psw);
+                con = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s", host, port, dbname), user, pass);
             } catch (SQLException e) {
                 log.log("Error -> " + "Connection Failed! Check output console");
                 e.printStackTrace();

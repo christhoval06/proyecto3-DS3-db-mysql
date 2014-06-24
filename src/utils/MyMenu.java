@@ -1,6 +1,7 @@
 package utils;
 
 import views.Clientes;
+import views.Styles;
 import views.Vendedores;
 
 import javax.swing.*;
@@ -21,9 +22,9 @@ import java.util.concurrent.Callable;
 public class MyMenu implements ActionListener {
     private DB db;
     private JFrame frame;
-    private HashMap<String,Color> pallet;
+    private Pallets pallet;
 
-    public MyMenu(JFrame f, DB d, HashMap<String,Color> p) {
+    public MyMenu(JFrame f, DB d, Pallets p) {
         frame = f;
         db = d;
         pallet = p;
@@ -48,6 +49,11 @@ public class MyMenu implements ActionListener {
         menuItem.addActionListener(this);
         menu.add(menuItem);
 
+        menuItem = new JMenuItem("Estilos", KeyEvent.VK_S);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
+        menuItem.setActionCommand("style");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
         menu.addSeparator();
 
         menuItem = new JMenuItem("Salir", KeyEvent.VK_Q);
@@ -119,6 +125,12 @@ public class MyMenu implements ActionListener {
         String action = e.getActionCommand();
         if(action.equalsIgnoreCase("presentacion")){
 
+        }else if(action.equalsIgnoreCase("style")){
+            frame.getContentPane().removeAll();
+            Styles styles = new Styles(frame, db, pallet);
+            frame.add(styles, BorderLayout.CENTER);
+            styles.lista();
+            frame.repaint();
         }else if(action.equalsIgnoreCase("salir")){
             salir();
         }else if(action.equalsIgnoreCase("clist") || action.equalsIgnoreCase("cadd")){

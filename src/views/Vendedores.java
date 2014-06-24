@@ -23,12 +23,14 @@ public class Vendedores extends FormPanel {
     private DB db;
     private JFrame frame;
     private HashMap<String, Color> pallet;
+    private Pallets palletsColors;
 
-    public Vendedores(JFrame f, DB d, HashMap<String, Color> p) {
+    public Vendedores(JFrame f, DB d, Pallets p) {
         super(p);
         frame = f;
         db = d;
-        pallet = p;
+        palletsColors = p;
+        pallet = palletsColors.getPallet();
         setBounds(0, 0, frame.getWidth(), frame.getHeight());
         setLayout(null);
         setBackground(pallet.get("color3"));
@@ -65,7 +67,7 @@ public class Vendedores extends FormPanel {
                 JTable table = (JTable) me.getSource();
                 if (me.getClickCount() == 2) {
                     final String codigo = (String) table.getModel().getValueAt(table.getSelectedRow(), 2);
-                    new Dialogs(frame, pallet).confirm(String.format("Quieres editar al Vendedor %s?", codigo), "NO", "SI", new Callable<Void>() {
+                    new Dialogs(frame, palletsColors).confirm(String.format("Quieres editar al Vendedor %s?", codigo), "NO", "SI", new Callable<Void>() {
                         @Override
                         public Void call() throws Exception {
                             editar(codigo);
@@ -126,7 +128,7 @@ public class Vendedores extends FormPanel {
         String sql = "select nombre,apellido,codigo,FORMAT(venta_mensual,2) as Venta, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from vendedor WHERE activo=1 AND codigo='%1$s' OR nombre LIKE '%%%1$s%%' OR apellido LIKE '%%%1$s%%' order by %2$s;";
         qtm.setQuery(String.format(sql, s, (orderBy != null ? orderBy : "nombre")));
         if (!(table.getModel().getRowCount() > 0))
-            new Dialogs(frame, pallet).alert("No hay resultados!!!", "Aceptar");
+            new Dialogs(frame, palletsColors).alert("No hay resultados!!!", "Aceptar");
     }
 
     private List<Item> getDepartamentos(){
@@ -200,7 +202,7 @@ public class Vendedores extends FormPanel {
         createBtn(accion, new Point(vendedor.isEmpty() ? 440 : 230, 440), new Dimension(190, 40), new Callable<Void>() {
             @Override
             public Void call() throws Exception {
-                new Dialogs(frame, pallet).confirm(String.format("Quieres %s al Vendedor?", accion), "NO", "SI", new Callable<Void>() {
+                new Dialogs(frame, palletsColors).confirm(String.format("Quieres %s al Vendedor?", accion), "NO", "SI", new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         save();
@@ -217,7 +219,7 @@ public class Vendedores extends FormPanel {
             createBtn("ELIMINAR", new Point(440, 440), new Dimension(190, 40), new Callable<Void>() {
                 @Override
                 public Void call() throws Exception {
-                    new Dialogs(frame, pallet).confirm(String.format("Quieres ELIMINAR a %s?", vendedorNombre), "NO", "SI", new Callable<Void>() {
+                    new Dialogs(frame, palletsColors).confirm(String.format("Quieres ELIMINAR a %s?", vendedorNombre), "NO", "SI", new Callable<Void>() {
                         @Override
                         public Void call() throws Exception {
                             eliminar();
@@ -237,13 +239,13 @@ public class Vendedores extends FormPanel {
         HashMap<String, Object> form = getForm();
         if (!form.isEmpty()) {
             if (String.valueOf(form.get("nombre")).isEmpty()) {
-                new Dialogs(frame, pallet).alert("debe colocar el NOMBRE", "Aceptar");
+                new Dialogs(frame, palletsColors).alert("debe colocar el NOMBRE", "Aceptar");
                 return;
             } else if (String.valueOf(form.get("apellido")).isEmpty()) {
-                new Dialogs(frame, pallet).alert("debe colocar el APELLIDO", "Aceptar");
+                new Dialogs(frame, palletsColors).alert("debe colocar el APELLIDO", "Aceptar");
                 return;
             } else if (String.valueOf(form.get("codigo")).isEmpty()) {
-                new Dialogs(frame, pallet).alert("debe colocar un CODIGO", "Aceptar");
+                new Dialogs(frame, palletsColors).alert("debe colocar un CODIGO", "Aceptar");
                 return;
             }
 
@@ -258,11 +260,11 @@ public class Vendedores extends FormPanel {
                 operacion = "Guardado";
             }
             if (db.execSQL(sql)) {
-                new Dialogs(frame, pallet).alert(String.format("Cliente %s correctamente", operacion), "Aceptar");
+                new Dialogs(frame, palletsColors).alert(String.format("Cliente %s correctamente", operacion), "Aceptar");
                 lista();
                 return;
             }
-            new Dialogs(frame, pallet).alert("a ocurrido un error, revise el log.", "Aceptar");
+            new Dialogs(frame, palletsColors).alert("a ocurrido un error, revise el log.", "Aceptar");
         }
     }
 
@@ -271,10 +273,10 @@ public class Vendedores extends FormPanel {
         String clienteid = String.valueOf(form.get("clienteid")),
                 cedula = String.valueOf(form.get("cedula"));
         if (db.execSQL(String.format("delete from vendedor where vendedorid=%s", clienteid))) {
-            new Dialogs(frame, pallet).alert(String.format("Cliente %s Eliminado correctamente", cedula), "Aceptar");
+            new Dialogs(frame, palletsColors).alert(String.format("Cliente %s Eliminado correctamente", cedula), "Aceptar");
             lista();
             return;
         }
-        new Dialogs(frame, pallet).alert("a ocurrido un error, revise el log.", "Aceptar");
+        new Dialogs(frame, palletsColors).alert("a ocurrido un error, revise el log.", "Aceptar");
     }
 }

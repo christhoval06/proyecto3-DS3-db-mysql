@@ -19,12 +19,14 @@ import java.util.concurrent.Callable;
  */
 public class Dialogs extends JDialog {
     private HashMap<String, Color> pallet;
+    private Pallets palletsColors;
     private JFrame frame;
 
-    public Dialogs(JFrame f, HashMap<String, Color> p) {
+    public Dialogs(JFrame f, Pallets p) {
         super(f, "", false);
         frame = f;
-        pallet = p;
+        palletsColors = p;
+        pallet = palletsColors.getPallet();
     }
 
     public void confirm(String msg, String btn, Callable<Void> callback){
