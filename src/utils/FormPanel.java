@@ -118,6 +118,22 @@ public class FormPanel extends JPanel {
     public HashMap<String, Object> getForm(){
         form = new HashMap<String, Object>();
         Component[] fields = getComponents();
+        for(Component field: getComponents()){
+            if (field.getClass().getSimpleName().equalsIgnoreCase("JTextField")) {
+                JTextField f = (JTextField) field;
+                form.put(f.getName(), f.getText().trim());
+            }
+            if (field.getClass().getSimpleName().equalsIgnoreCase("JCheckBox")) {
+                JCheckBox f = (JCheckBox) field;
+                form.put(f.getName(), f.isSelected()?1:0);
+            }
+            if (field.getClass().getSimpleName().equalsIgnoreCase("JComboBox")) {
+                JComboBox f = (JComboBox) field;
+                Item item = (Item) f.getSelectedItem();
+                form.put(f.getName(), item!=null? item.getCode(): "");
+            }
+        }
+        /*
         for (int i = 0; i < fields.length; i++) {
             if (fields[i].getClass().getSimpleName().equalsIgnoreCase("JTextField")) {
                 JTextField f = (JTextField) fields[i];
@@ -133,6 +149,7 @@ public class FormPanel extends JPanel {
                 form.put(f.getName(), item!=null? item.getCode(): "");
             }
         }
+        */
         return form;
     }
 }

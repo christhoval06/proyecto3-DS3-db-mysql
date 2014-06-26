@@ -192,3 +192,23 @@
 24/06/2014 06:29:38 : sql -> select nombre,apellido,codigo,FORMAT(venta_mensual,2) as Venta, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from vendedor;
 24/06/2014 06:29:41 : -------- MySQL JDBC Connection Testing ------------
 24/06/2014 06:29:41 : sql -> SELECT * FROM vendedor WHERE codigo='001';
+25/06/2014 11:47:01 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:47:01 : MySQL JDBC Driver Registered!
+25/06/2014 11:47:03 : You made it, take control your database now!
+25/06/2014 11:47:19 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:47:19 : sql -> select nombre,apellido,cedula,FORMAT(compra_anual,2) as Compra, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from cliente;
+25/06/2014 11:50:53 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:50:53 : sql -> SELECT * FROM cliente WHERE cedula='5-706-1803';
+25/06/2014 11:50:56 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:50:56 : sql -> SELECT * FROM cliente WHERE cedula='5-706-1803';
+25/06/2014 11:53:05 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:53:05 : MySQL JDBC Driver Registered!
+25/06/2014 11:53:06 : You made it, take control your database now!
+25/06/2014 11:53:10 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:53:10 : sql -> select nombre,apellido,cedula,FORMAT(compra_anual,2) as Compra, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from cliente;
+25/06/2014 11:53:12 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:53:12 : sql -> SELECT * FROM cliente WHERE cedula='6-888-888';
+25/06/2014 11:53:19 : sql -> UPDATE cliente SET nombre='Rogelio', apellido='Rivas', cedula='6-888-888', direccion='Chitre, Calle 1ra', telefono='66812356', provincia='HE', compra_anual=0.0, activo=1 WHERE clienteid=6 
+25/06/2014 11:53:19 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:53:19 : -------- MySQL JDBC Connection Testing ------------
+25/06/2014 11:53:19 : sql -> select nombre,apellido,cedula,FORMAT(compra_anual,2) as Compra, CASE activo WHEN 1 THEN 'SI' ELSE 'NO' END as Activo from cliente;
