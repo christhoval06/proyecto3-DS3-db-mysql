@@ -51,16 +51,10 @@ public class DB {
 
     private void init() {
         try {
-            URL resource = getClass().getClassLoader().getResource("config.properties");
-            (Paths.get(resource.toURI()).toFile()).getPath();
-            System.out.println((Paths.get(resource.toURI()).toFile()).getPath());
-            config = new ConfigurationManager((Paths.get(resource.toURI()).toFile()).getPath(), false);
+            config = new ConfigurationManager(getResourcePath("config.properties"), false);
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
         }
-
         host = getConfig("host", host);
         port = getConfig("port", port);
         dbname = getConfig("dbname", dbname);
@@ -71,8 +65,22 @@ public class DB {
         abrir();
     }
 
+    public String getResourcePath(String name){
+        try {
+            URL resource = getClass().getClassLoader().getResource(name);
+            return (Paths.get(resource.toURI()).toFile()).getPath();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public String getConfig(String name, String defult){
        return config.getProperty(name, defult);
+    }
+
+    public Connection getCon(){
+        return con;
     }
 
     public void setConfig(String name, String value){

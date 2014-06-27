@@ -1,6 +1,7 @@
 package utils;
 
 import views.Clientes;
+import views.Reportes;
 import views.Styles;
 import views.Vendedores;
 
@@ -153,10 +154,16 @@ public class MyMenu implements ActionListener {
                 vendedores.editar("");
             }
             frame.repaint();
-        }else if(action.equalsIgnoreCase("rclientes")){
+        }else if(action.equalsIgnoreCase("rclientes") || action.equalsIgnoreCase("rvendedores")){
+            frame.getContentPane().removeAll();
+            Reportes reportes = new Reportes(frame, db, pallet);
+            frame.add(reportes, BorderLayout.CENTER);
+            if(action.equalsIgnoreCase("rclientes")){
+                reportes.cliente();
+            }else if(action.equalsIgnoreCase("rvendedores")){
 
-        }else if(action.equalsIgnoreCase("rvendedores")){
-
+            }
+            frame.repaint();
         }else{
             db.log(String.format("Funcion %s, no implementada", action));
         }

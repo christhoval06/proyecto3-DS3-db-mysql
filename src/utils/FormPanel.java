@@ -88,6 +88,40 @@ public class FormPanel extends JPanel {
         return  chk;
     }
 
+
+    public JRadioButton createRadioButtonAndLabel(String nombre, boolean value, int y, Font fnt){
+        JRadioButton rb = new JRadioButton(nombre.toUpperCase());
+        rb.setBounds(230, y, 120, 40);
+        rb.setSelected(value);
+        rb.setFont(fnt);
+        rb.setBackground(pallet.get("color3"));
+        rb.setForeground(pallet.get("color1"));
+        rb.setName(removeCosasRaras(nombre));
+        add(rb);
+        return  rb;
+    }
+
+    public void createRadioButtonGroupAndLabel(String nombre, String rbs[], String value, Point xy, Dimension wh, Font fnt){
+        MyButtonGroup group = new MyButtonGroup(nombre);
+        JRadioButton rb;
+        int y = xy.y;
+        for (String name: rbs){
+            rb= new JRadioButton(name.toUpperCase());
+            rb.setActionCommand(name);
+            rb.setSize(wh);
+            rb.setLocation(xy.x,y);
+            rb.setSelected(value.equalsIgnoreCase(name));
+            rb.setFont(fnt);
+            rb.setBackground(pallet.get("color3"));
+            rb.setForeground(pallet.get("color1"));
+            rb.setName(removeCosasRaras(nombre));
+            group.add(rb);
+            add(rb);
+            y += wh.height+5;
+        }
+        return;
+    }
+
     public JComboBox createComboBoxAndLabel(String nombre, String value, int y, Font fnt, final List<Item> values){
         JLabel label = new JLabel(String.format("%s:", nombre.toUpperCase()));
         label.setForeground(pallet.get("color1"));
@@ -123,33 +157,20 @@ public class FormPanel extends JPanel {
                 JTextField f = (JTextField) field;
                 form.put(f.getName(), f.getText().trim());
             }
-            if (field.getClass().getSimpleName().equalsIgnoreCase("JCheckBox")) {
+            else if (field.getClass().getSimpleName().equalsIgnoreCase("JCheckBox")) {
                 JCheckBox f = (JCheckBox) field;
                 form.put(f.getName(), f.isSelected()?1:0);
             }
-            if (field.getClass().getSimpleName().equalsIgnoreCase("JComboBox")) {
+            else if (field.getClass().getSimpleName().equalsIgnoreCase("JComboBox")) {
                 JComboBox f = (JComboBox) field;
                 Item item = (Item) f.getSelectedItem();
                 form.put(f.getName(), item!=null? item.getCode(): "");
             }
-        }
-        /*
-        for (int i = 0; i < fields.length; i++) {
-            if (fields[i].getClass().getSimpleName().equalsIgnoreCase("JTextField")) {
-                JTextField f = (JTextField) fields[i];
-                form.put(f.getName(), f.getText().trim());
-            }
-            if (fields[i].getClass().getSimpleName().equalsIgnoreCase("JCheckBox")) {
-                JCheckBox f = (JCheckBox) fields[i];
-                form.put(f.getName(), f.isSelected()?1:0);
-            }
-            if (fields[i].getClass().getSimpleName().equalsIgnoreCase("JComboBox")) {
-                JComboBox f = (JComboBox) fields[i];
-                Item item = (Item) f.getSelectedItem();
-                form.put(f.getName(), item!=null? item.getCode(): "");
+            else if (field.getClass().getSimpleName().equalsIgnoreCase("JRadioButton")) {
+                JRadioButton f = (JRadioButton) field;
+
             }
         }
-        */
         return form;
     }
 }
